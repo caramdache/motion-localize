@@ -69,10 +69,9 @@ module Utils
       unless answer =~ /^[yY][eE]?[sS]?$/ then
         return nil
       end
-
-      File.write(file_path, "")
     end
 
+    File.write(file_path, "")
     Dir.glob(file_path).first
   end
 
