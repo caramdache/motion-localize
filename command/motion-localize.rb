@@ -60,7 +60,7 @@ module Motion; class Command
       puts bold("To: ") + localizee
       file = File.open(localizee, 'w')
 
-      lines.each do |line|
+      lines.each_with_index do |line, i|
         line, key, value = line
         if value then
           localized_value = trans(source, target, value)
@@ -69,6 +69,8 @@ module Motion; class Command
           file.write(line)
         end
         file.write("\n")
+
+        print "\r#{i}/#{lines.count} lines"
       end
 
       file.close
