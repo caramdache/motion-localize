@@ -70,10 +70,11 @@ module Motion; class Command
         end
         file.write("\n")
 
-        print "\r#{i}/#{lines.count} lines"
+        print "\r#{i}/#{lines.count - 1} lines"
       end
 
       file.close
+      puts bold("DONE")
     end
 
   end
