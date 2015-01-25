@@ -32,7 +32,11 @@ module Motion; class Command
       @source = argv.shift_argument
 
       @targets = argv.shift_argument
-      @targets = @targets.split(',') if @targets
+      if @targets then
+        @targets = @targets.gsub(/zh/, 'zh-Hant,zh-Hans')
+        @targets = @targets.split(',')
+      end
+
       super
     end
 

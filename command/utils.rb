@@ -24,21 +24,36 @@ module Utils
   TRANS_SHELL = '/usr/local/bin/trans'
 
   def trans(source, target, string)
+    target = fix_target(target)
+
     string.split('\n').collect do |substring|
       next if substring.length == 0
 
-      translation = `#{TRANS_SHELL} -b #{source}:#{target} \"#{substring}\" 2>&1`.split("\n").first
+      translation = unless substring =~ /^http/ then
+        `#{TRANS_SHELL} -b #{source}:#{target} \"#{substring}\" 2>&1`.split("\n").first
+      else
+        substring
+      end
 
       fix_trans(translation)
     end.join('\n')
   end
 
+  def fix_target(target)
+    case target
+      when /zh-Hant/ then 'zh-TW'
+      when /zh-Hans/ then 'zh-CN'
+      else target
+    end
+  end
+
   def fix_trans(string)
     string.gsub!(/"([^"]+)"/, ' \'\1\' ') # replace " by '
+    string.gsub!(/"/, '\'')               # there may be some " left
     string.gsub!(/\( /, ' (')             # space before (, not after
     string.gsub!(/  /, ' ')               # remove double-spaces
     string.gsub!(/ \./, '.')              # no space before .
-    string.gsub!(/\\ U([0-9]+)/, '\\U\1') # reassemble Unicode definition
+    string.gsub!(/\\ U([0-9]+)/, '\\U\1') # reassemble Unicode definitions
     string
   end
 

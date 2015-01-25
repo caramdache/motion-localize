@@ -5,9 +5,9 @@ A RubyMotion plugin to provide localization commands for projects.
 ## Install
 
 ```
-$ gem install motion-localize
 $ brew install http://www.soimort.org/translate-shell/translate-shell.rb
 $ gem install motion-appstore
+$ gem install motion-localize
 ```
 
 If you like to install manually,
@@ -33,12 +33,23 @@ If the file already exists, you will be prompted whether you wish to overwrite.
 Example)
 
 ```
-$ motion localize en fr,de,cn
+$ motion localize en fr,de,zh
 Localize: resources/en.lproj/Localizable.strings
 To: resources/fr.lproj/Localizable.strings
 To: resources/de.lproj/Localizable.strings
-To: resources/cn.lproj/Localizable.strings
+To: resources/zh-Hant.lproj/Localizable.strings (traditional Chinese)
+To: resources/zh-Hans.lproj/Localizable.strings (simplified Chinese)
 ```
+
+## Available language codes
+
+Use trans for a list of available language codes.
+
+```
+$ trans -R
+```
+
+For Chinese, don't use the codes provided by 'trans', use 'zh' instead. 'zh' will produce both simplified ('zh-Hans') and traditional ('zh-Hant') Chinese.
 
 ## Thanks
 
@@ -46,6 +57,5 @@ To: resources/cn.lproj/Localizable.strings
 
 [translate-shell] (https://github.com/soimort/translate-shell.git) provides the translation for motion-localize.
 
-And, last but not least, thanks to Watson for his amazing motion extension [motion-appstore] (https://github.com/Watson1978/motion-appstore.git). It was the inspiration for creating motion-localize.
-
+Last but not least [motion-appstore] (https://github.com/Watson1978/motion-appstore.git) was the inspiration for motion-localize.
 
