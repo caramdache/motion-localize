@@ -57,5 +57,5 @@ For Chinese, don't use the codes provided by 'trans', use 'zh' instead. 'zh' wil
 
 [translate-shell] (https://github.com/soimort/translate-shell.git) provides the translation for motion-localize.
 
-Last but not least [motion-appstore] (https://github.com/Watson1978/motion-appstore.git) was the inspiration for motion-localize.
+Last but not least [motion-appstore] (https://github.com/Watson1978/motion-appstore.git) was the inspiration for motion-localize. Thank you Watson.
 
